@@ -131,6 +131,7 @@ describe('AlbumHeader', () => {
     expect(screen.getByRole('button', { name: 'Edit title' })).toBeInTheDocument();
 
     const more = await openMore();
+    expect(more.queryByRole('menuitem', { name: 'Export originals and metadata…' })).toBeInTheDocument();
     expect(more.getByRole('menuitem', { name: 'Edit details' })).toBeInTheDocument();
     expect(more.getByRole('menuitem', { name: /Delete album/ })).toBeInTheDocument();
     expect(more.queryByRole('menuitem', { name: /Leave album/ })).toBeNull();
@@ -146,6 +147,7 @@ describe('AlbumHeader', () => {
     expect(screen.getByRole('button', { name: /^Comments/ })).toBeInTheDocument();
 
     const more = await openMore();
+    expect(more.queryByRole('menuitem', { name: 'Export originals and metadata…' })).toBeNull();
     expect(more.getByRole('menuitem', { name: 'Edit details' })).toBeInTheDocument();
     expect(more.queryByRole('menuitem', { name: /Delete album/ })).toBeNull();
     expect(more.getByRole('menuitem', { name: /Leave album/ })).toBeInTheDocument();
@@ -163,6 +165,7 @@ describe('AlbumHeader', () => {
     expect(screen.getByText(/View only/)).toBeInTheDocument();
 
     const more = await openMore();
+    expect(more.queryByRole('menuitem', { name: 'Export originals and metadata…' })).toBeNull();
     expect(more.queryByRole('menuitem', { name: 'Edit details' })).toBeNull();
     expect(more.queryByRole('menuitem', { name: 'Options' })).toBeNull();
     expect(more.getByRole('menuitem', { name: /Leave album/ })).toBeInTheDocument();
